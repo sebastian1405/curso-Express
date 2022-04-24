@@ -1,6 +1,8 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const { path } = require("express/lib/application");
+const res = require("express/lib/response");
+const { routeHelper, sleep, addUserToDB } = require("./routeHelper");
 
 const app = express();
 
@@ -77,4 +79,23 @@ app.get("/users/redirect-location", (req, res) => {
 app.get("/users/download", (req, res) => {
   res.download(path.join(__dirname, "file.txt"), "hola.txt");
 });
+//manejo de errores
+app.get(
+  "/test",
+  routeHelper(async (req, res) => {
+    // await sleep(500);
+
+    // await test(); //funcion que no existe para el error
+    res.json({
+      status: "ok",
+    });
+  })
+);
+
+app.get(
+  "/test2",
+  routeHelper(async (req, res) => {
+    //codigo unico
+  })
+);
 app.listen(5000, () => console.log("API ready port:5000..."));
