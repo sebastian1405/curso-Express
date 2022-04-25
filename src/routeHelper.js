@@ -21,4 +21,4 @@ const addUserToDB = () => {
   );
   //ejemplo para error
 };
-export default { routeHelper, sleep, addUserToDB };
+// export default { routeHelper, sleep, addUserToDB };
